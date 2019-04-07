@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from "rxjs";
 
-interface ICustomObject {
+export interface ICustomObject {
   title: string,
   date: Date
 }
