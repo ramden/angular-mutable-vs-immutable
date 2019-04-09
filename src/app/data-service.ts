@@ -18,7 +18,7 @@ var listData: Array<ICustomObject> = [
 })
 export class DataService {
   private _listDataSubject = new BehaviorSubject(listData)
-  listDataObserver$ = this._listDataSubject.asObserver()
+  listDataObserver$ = this._listDataSubject.asObservable()
 
   addItem(item: ICustomObject) {
     listData.push(item);
