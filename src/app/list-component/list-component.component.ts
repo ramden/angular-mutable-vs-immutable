@@ -8,12 +8,13 @@ import {ICustomObject} from "../data-service";
 })
 export class ListComponentComponent implements OnInit {
 
-  @Input
+  @Input()
   listData: Array<ICustomObject>;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.listData);
   }
 
 }

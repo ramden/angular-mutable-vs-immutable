@@ -1,37 +1,38 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 
-export interface ICustomObject {
+export interface ICustomNestedObject {
   title: string,
-  date: Date
 }
 
-var listData: Array<ICustomObject> = [
-  {
-    title: "Item 1",
-    date: new Date()
-  }
-];
+export interface ICustomObject {
+  title: string,
+  date: Date,
+  nestedObject: ICustomNestedObject
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  private _listDataSubject = new BehaviorSubject(listData)
+  listData: Array<ICustomObject> = [];
+
+  private _listDataSubject = new BehaviorSubject([])
   listDataObserver$ = this._listDataSubject.asObservable()
 
   addItem(item: ICustomObject) {
-    listData.push(item);
-    this._listDataSubject.next(listData);
+    this.listData.push(item);
+    this._listDataSubject.value.push(item)
+    //this._listDataSubject.next();
   }
 
-  deleteItem(item: ICustomObject) {
-    listData = listData.filter(obj => obj !== item);
-    this._listDataSubject.next(listData);
+  deleteLast() {
+    //this.listData.pop();
+    this._listDataSubject.value.pop()
+    //this._listDataSubject.next(this.listData);
   }
 
-  updateItem(item: ICustomObject) {
-    let index = listData.indexOf(item);
-    listData[index] = item;
+  updateLast() {
+    this.listData[this.listData.length - 1].nestedObject.title = this.listData[this.listData.length - 1].nestedObject.title + " UPDATED";
   }
 }

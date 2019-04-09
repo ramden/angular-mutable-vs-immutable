@@ -1,3 +1,5 @@
-<p>
-  list-component works!
-</p>
+<ul>
+  <li *ngFor="let item of listData">
+    {{item.title}} | {{item.nestedObject.title}} | {{item.date | date}}
+    </li>
+</ul>

@@ -1,0 +1,11 @@
+<h3>Example of mutable list:</h3>
+<app-list-component [listData]='listData$ | async'></app-list-component>
+
+<h3>Example of immutable list:</h3>
+<app-list-component [listData]='listData$ | async'></app-list-component>
+
+<hr>
+
+<button (click)="add()">Add</button>
+<button (click)="delete()">Delete last</button>
+<button (click)="edit()">Edit last</button>
